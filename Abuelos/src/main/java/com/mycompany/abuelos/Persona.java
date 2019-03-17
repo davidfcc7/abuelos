@@ -3,25 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package familia;
+package com.mycompany.abuelos;
 
 import java.util.HashMap;
 import java.util.Map;
-
 /**
  *
- * @author navi
+ * @author David
  */
 public class Persona {
+    
     private Integer cedula;
     private String nombre;
-    private String apellido;
-    private Map<Integer, Persona> mapaPersona = new HashMap<Integer, Persona>();
     
-    public Persona(Integer cedula, String nombre, String apellido){
+    private Map<Integer, Persona> mapa = new HashMap<Integer, Persona>();
+    
+    public Persona (Integer cedula, String nombre){
         this.cedula = cedula;
         this.nombre = nombre;
-        this.apellido = apellido;
     }
 
     /**
@@ -32,6 +31,13 @@ public class Persona {
     }
 
     /**
+     * @param cedula the cedula to set
+     */
+    public void setCedula(Integer cedula) {
+        this.cedula = cedula;
+    }
+
+    /**
      * @return the nombre
      */
     public String getNombre() {
@@ -39,19 +45,28 @@ public class Persona {
     }
 
     /**
-     * @return the apellido
+     * @param nombre the nombre to set
      */
-    public String getApellido() {
-        return apellido;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     /**
-     * @return the mapaPersona
+     * @return the mapa
      */
-    public Map<Integer, Persona> getMapaPersona() {
-        return mapaPersona;
+    public Map<Integer, Persona> getMapa() {
+        return mapa;
+    }
+
+    /**
+     * @param mapa the mapa to set
+     */
+    public void setMapa(Map<Integer, Persona> mapa) {
+        this.mapa = mapa;
     }
     
-    
+    public void mostrar(){
+        System.out.println(nombre);
+    }
     
 }
