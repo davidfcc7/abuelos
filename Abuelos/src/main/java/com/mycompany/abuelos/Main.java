@@ -3,15 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.abuelos;
+package familia;
+
+import java.io.IOException;
 
 /**
  *
- * @author David
+ * @author navi
  */
 public class Main {
-    public static void main (String [] args){
+    
+    public static void main(String []args) throws IOException{
         Principal p = new Principal();
         
     }
+    
 }
