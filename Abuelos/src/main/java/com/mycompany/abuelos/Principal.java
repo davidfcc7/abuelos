@@ -60,7 +60,7 @@ public class Principal {
         abuelo2.getMapa().get(6).getMapa().put(nieto6.getCedula(), nieto6);
         abuelo2.getMapa().get(7).getMapa().put(nieto7.getCedula(), nieto7);
         abuelo2.getMapa().get(8).getMapa().put(nieto8.getCedula(), nieto8);
-        System.out.println("Fin de agregar");
+       
         
     
     
@@ -72,7 +72,17 @@ public class Principal {
     }
     public void agregarArbol(Integer numHijo, Persona genealogia){
         boolean existe = false;
+        if(existe == false)
         for(int i=1;i<=abuelos.size();i++){
+            Persona persona = abuelos.get(i);
+                for(int j=1;j<=persona.getMapa().size();i++){
+                    Persona padreAdd = persona.getMapa().get(j);
+                        if((persona.getCedula().equals(numHijo))||(padreAdd.getCedula().equals(numHijo))){
+                            persona.getMapa().put(genealogia.getCedula(),genealogia);
+                            existe=true;
+            }
+        }
+        /*for(int i=1;i<=abuelos.size();i++){
             Persona persona = abuelos.get(i);
             if(persona.getCedula().equals(numHijo)){
                 persona.getMapa().put(genealogia.getCedula(),genealogia);
@@ -89,26 +99,29 @@ public class Principal {
                                 break;
                             }
                     }
-                }
+     */           }
     }
     public void Buscar(Integer key){
         boolean existe = false;
         existe = abuelos.containsKey(key);
+        //-----------------------RECORRER ABUELOS
         if (existe==true){
             Persona persona = abuelos.get(key);
-            System.out.println("los hijos y nietos de : "+persona.getNombre());
+            
             for (Map.Entry<Integer, Persona> entry : persona.getMapa().entrySet()) {
                 Integer key1 = entry.getKey();
                 Persona value = entry.getValue();
-                System.out.println(value.getNombre());
+                System.out.println("el hijo de: "+persona.getNombre());
+                System.out.println("es:  "+value.getNombre());
                 for (Map.Entry<Integer, Persona> entry1 : value.getMapa().entrySet()) {
                     Integer key2 = entry1.getKey();
                     Persona value1 = entry1.getValue();
-                    System.out.println(value1.getNombre());
+                    System.out.println("su nieto es: "+value1.getNombre());
                 }
                 
             }
         }
+        //--------------------RECORRER HIJOS
         else if (existe==false){
             for (Map.Entry<Integer, Persona> entry : abuelos.entrySet()) {
                 Integer key1 = entry.getKey();
@@ -117,7 +130,7 @@ public class Principal {
                 if(existe==true){
                     System.out.println("su nombre es: " + value.getMapa().get(key).getNombre());
                     System.out.println("su padre es: "+value.getNombre());
-                    System.out.println("sus nietos son:");
+                    System.out.println("sus hijos son:");
                     for (Map.Entry<Integer, Persona> entry1 : value.getMapa().get(key).getMapa().entrySet()) {
                     Integer key2 = entry1.getKey();
                     Persona value1 = entry1.getValue();
@@ -126,6 +139,7 @@ public class Principal {
                 }
             }
         }
+        //------------RECORRER NIETOS
         if(existe==false){
             for (Map.Entry<Integer, Persona> entry : abuelos.entrySet()) {
                 Integer key1 = entry.getKey();
@@ -143,11 +157,13 @@ public class Principal {
                 
                 
             }
+            
         }
         else{
             System.out.println("NO EXISTE LA CEDULA");
         }
-         
+        
+       
     }
     /**
      *
